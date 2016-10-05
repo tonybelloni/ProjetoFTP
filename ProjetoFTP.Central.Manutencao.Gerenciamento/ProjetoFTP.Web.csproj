@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A176B76-06DA-41BF-87C6-4808357636FB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjetoFTP.Web</RootNamespace>
+    <AssemblyName>ProjetoFTP.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.6\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="carros_img\carro_amarelo.png" />
+    <Content Include="carros_img\carro_branco.png" />
+    <Content Include="carros_img\carro_laranja.png" />
+    <Content Include="carros_img\carro_verde.png" />
+    <Content Include="carros_img\carro_vermelho.png" />
+    <Content Include="Default.aspx" />
+    <Content Include="estilos\box.css" />
+    <Content Include="estilos\carrospainel.css" />
+    <Content Include="estilos\default.css" />
+    <Content Include="estilos\downloads.css" />
+    <Content Include="estilos\login.css" />
+    <Content Include="estilos\notificacoes.css" />
+    <Content Include="estilos\pagina.css" />
+    <Content Include="estilos\painel.css" />
+    <Content Include="estilos\relatorios.css" />
+    <Content Include="estilos\relatorioscopiasrel.css" />
+    <Content Include="estilos\relatorio_transferencia.css" />
+    <Content Include="estilos\site.css" />
+    <Content Include="estilos\style.css" />
+    <Content Include="estilos\temporeal.css" />
+    <Content Include="estilos\workspace.css" />
+    <Content Include="fancybox\blank.gif" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\1_b.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\1_s.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\2_b.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\2_s.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\3_b.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\3_s.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\4_b.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\4_s.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\5_b.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\5_s.jpg" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\ajax.txt" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\demo\index.html" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\lib\jquery-1.7.1.min.js" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\blank.gif" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\fancybox_loading.gif" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\fancybox_sprite.png" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\helpers\fancybox_buttons.png" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\jquery.fancybox.css" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\jquery.fancybox.js" />
+    <Content Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\source\jquery.fancybox.pack.js" />
+    <Content Include="fancybox\fancybox_loading.gif" />
+    <Content Include="fancybox\fancybox_sprite.png" />
+    <Content Include="fancybox\jquery.fancybox.css" />
+    <Content Include="fancybox\jquery.fancybox.js" />
+    <Content Include="fancybox\jquery.fancybox.pack.js" />
+    <Content Include="FrmAdicionaCarro.aspx" />
+    <Content Include="FrmAdicionaEmail.aspx" />
+    <Content Include="FrmAdicionaEstacao.aspx" />
+    <Content Include="FrmAgendamento.aspx" />
+    <Content Include="FrmCarros.aspx" />
+    <Content Include="FrmConfiguracoes.aspx" />
+    <Content Include="FrmEditaCarro.aspx" />
+    <Content Include="FrmEditaEstacao.aspx" />
+    <Content Include="FrmEditarCarro.aspx" />
+    <Content Include="FrmEmails.aspx" />
+    <Content Include="FrmEstacoes.aspx" />
+    <Content Include="FrmLogin.aspx" />
+    <Content Include="FrmLogout.aspx" />
+    <Content Include="FrmLogs.aspx" />
+    <Content Include="FrmNotificacoes.aspx" />
+    <Content Include="FrmPainelCarros.aspx" />
+    <Content Include="FrmPainelVerificacao.aspx" />
+    <Content Include="FrmRelatorioCopias.aspx" />
+    <Content Include="FrmRelatorioCopiasRel.aspx" />
+    <Content Include="FrmRelatorioTransferencias.aspx" />
+    <Content Include="FrmRelatorioVerificacoes.aspx" />
+    <Content Include="FrmTempoReal.aspx" />
+    <Content Include="FrmTerminais.aspx" />
+    <Content Include="FrmVeiculos.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="img\camera_icon.png" />
+    <Content Include="img\carro.png" />
+    <Content Include="img\download_icon.png" />
+    <Content Include="img\estacao.png" />
+    <Content Include="img\logo_carro.png" />
+    <Content Include="FrmRelatorioCopiasGraf.aspx" />
+    <Content Include="img\notificacao.png" />
+    <Content Include="img\painel.png" />
+    <Content Include="img\relatorio.png" />
+    <Content Include="img\sair.png" />
+    <Content Include="img\sinal_icon.png" />
+    <Content Include="img\terminal_desligado.png" />
+    <Content Include="img\terminal_ligado.png" />
+    <Content Include="img\whitey.png" />
+    <Content Include="scripts\alert.js" />
+    <Content Include="scripts\box.js" />
+    <Content Include="scripts\download.js" />
+    <Content Include="estilos\jquery.alerts.css" />
+    <Content Include="scripts\jquery-2.0.3.min.js" />
+    <Content Include="scripts\jquery.alerts.js" />
+    <Content Include="FrmPainel.aspx" />
+    <Content Include="FrmRelatorios.aspx" />
+    <Content Include="scripts\mask.js" />
+    <Content Include="scripts\relatoriodetalhado.js" />
+    <Content Include="scripts\ScrollableGrid.js" />
+    <Content Include="scripts\watermark.js" />
+    <Content Include="scripts\workspace.js" />
+    <Content Include="temporeal.html" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAdicionaCarro.aspx.cs">
+      <DependentUpon>FrmAdicionaCarro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmAdicionaCarro.aspx.designer.cs">
+      <DependentUpon>FrmAdicionaCarro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAdicionaEmail.aspx.cs">
+      <DependentUpon>FrmAdicionaEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmAdicionaEmail.aspx.designer.cs">
+      <DependentUpon>FrmAdicionaEmail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAdicionaEstacao.aspx.cs">
+      <DependentUpon>FrmAdicionaEstacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmAdicionaEstacao.aspx.designer.cs">
+      <DependentUpon>FrmAdicionaEstacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAgendamento.aspx.cs">
+      <DependentUpon>FrmAgendamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmAgendamento.aspx.designer.cs">
+      <DependentUpon>FrmAgendamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCarros.aspx.cs">
+      <DependentUpon>FrmCarros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCarros.aspx.designer.cs">
+      <DependentUpon>FrmCarros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConfiguracoes.aspx.cs">
+      <DependentUpon>FrmConfiguracoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmConfiguracoes.aspx.designer.cs">
+      <DependentUpon>FrmConfiguracoes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditaCarro.aspx.cs">
+      <DependentUpon>FrmEditaCarro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmEditaCarro.aspx.designer.cs">
+      <DependentUpon>FrmEditaCarro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditaEstacao.aspx.cs">
+      <DependentUpon>FrmEditaEstacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmEditaEstacao.aspx.designer.cs">
+      <DependentUpon>FrmEditaEstacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditarCarro.aspx.cs">
+      <DependentUpon>FrmEditarCarro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmEditarCarro.aspx.designer.cs">
+      <DependentUpon>FrmEditarCarro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmails.aspx.cs">
+      <DependentUpon>FrmEmails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmEmails.aspx.designer.cs">
+      <DependentUpon>FrmEmails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEstacoes.aspx.cs">
+      <DependentUpon>FrmEstacoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmEstacoes.aspx.designer.cs">
+      <DependentUpon>FrmEstacoes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.aspx.cs">
+      <DependentUpon>FrmLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.aspx.designer.cs">
+      <DependentUpon>FrmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogout.aspx.cs">
+      <DependentUpon>FrmLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmLogout.aspx.designer.cs">
+      <DependentUpon>FrmLogout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogs.aspx.cs">
+      <DependentUpon>FrmLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmLogs.aspx.designer.cs">
+      <DependentUpon>FrmLogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNotificacoes.aspx.cs">
+      <DependentUpon>FrmNotificacoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmNotificacoes.aspx.designer.cs">
+      <DependentUpon>FrmNotificacoes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPainel.aspx.cs">
+      <DependentUpon>FrmPainel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmPainel.aspx.designer.cs">
+      <DependentUpon>FrmPainel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPainelCarros.aspx.cs">
+      <DependentUpon>FrmPainelCarros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmPainelCarros.aspx.designer.cs">
+      <DependentUpon>FrmPainelCarros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPainelVerificacao.aspx.cs">
+      <DependentUpon>FrmPainelVerificacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmPainelVerificacao.aspx.designer.cs">
+      <DependentUpon>FrmPainelVerificacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRelatorioCopias.aspx.cs">
+      <DependentUpon>FrmRelatorioCopias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmRelatorioCopias.aspx.designer.cs">
+      <DependentUpon>FrmRelatorioCopias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRelatorioCopiasRel.aspx.cs">
+      <DependentUpon>FrmRelatorioCopiasRel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmRelatorioCopiasRel.aspx.designer.cs">
+      <DependentUpon>FrmRelatorioCopiasRel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRelatorios.aspx.cs">
+      <DependentUpon>FrmRelatorios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmRelatorios.aspx.designer.cs">
+      <DependentUpon>FrmRelatorios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRelatorioTransferencias.aspx.cs">
+      <DependentUpon>FrmRelatorioTransferencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmRelatorioTransferencias.aspx.designer.cs">
+      <DependentUpon>FrmRelatorioTransferencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRelatorioVerificacoes.aspx.cs">
+      <DependentUpon>FrmRelatorioVerificacoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmRelatorioVerificacoes.aspx.designer.cs">
+      <DependentUpon>FrmRelatorioVerificacoes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTempoReal.aspx.cs">
+      <DependentUpon>FrmTempoReal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmTempoReal.aspx.designer.cs">
+      <DependentUpon>FrmTempoReal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTerminais.aspx.cs">
+      <DependentUpon>FrmTerminais.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmTerminais.aspx.designer.cs">
+      <DependentUpon>FrmTerminais.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVeiculos.aspx.cs">
+      <DependentUpon>FrmVeiculos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmVeiculos.aspx.designer.cs">
+      <DependentUpon>FrmVeiculos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetCarrosByTerminal.ashx.cs">
+      <DependentUpon>GetCarrosByTerminal.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetCarros.ashx.cs">
+      <DependentUpon>GetCarros.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetCarrosTerminal.ashx.cs">
+      <DependentUpon>GetCarrosTerminal.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetNotificacoes.ashx.cs">
+      <DependentUpon>GetNotificacoes.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetPainelHistorico.ashx.cs">
+      <DependentUpon>GetPainelHistorico.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetProcedimentos.ashx.cs">
+      <DependentUpon>GetProcedimentos.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetSignal.ashx.cs">
+      <DependentUpon>GetSignal.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetTerminais.ashx.cs">
+      <DependentUpon>GetTerminais.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="queries\getServerInfo.ashx.cs">
+      <DependentUpon>getServerInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetTransferencia.ashx.cs">
+      <DependentUpon>GetTransferencia.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetTransferencias.ashx.cs">
+      <DependentUpon>GetTransferencias.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\GetTransfInfo.ashx.cs">
+      <DependentUpon>GetTransfInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\RemoveCarroTerminal.ashx.cs">
+      <DependentUpon>RemoveCarroTerminal.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\SendCarro.ashx.cs">
+      <DependentUpon>SendCarro.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="queries\SendSignal.ashx.cs">
+      <DependentUpon>SendSignal.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorio.cs" />
+    <Compile Include="FrmRelatorioCopiasGraf.aspx.cs">
+      <DependentUpon>FrmRelatorioCopiasGraf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmRelatorioCopiasGraf.aspx.designer.cs">
+      <DependentUpon>FrmRelatorioCopiasGraf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Util.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoFTP.Utilidades\ProjetoFTP.Utilidades.csproj">
+      <Project>{57E691D5-0594-4027-A3AB-955D174E7A28}</Project>
+      <Name>ProjetoFTP.Utilidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\CHANGELOG.md" />
+    <None Include="fancybox\fancyapps-fancyBox-v2.0.4-0-g81c12d7 %281%29\fancyapps-fancyBox-83bf93f\README.md" />
+    <Content Include="GetCarrosByTerminal.ashx" />
+    <Content Include="queries\GetTerminais.ashx" />
+    <Content Include="queries\GetProcedimentos.ashx" />
+    <Content Include="queries\GetTransfInfo.ashx" />
+    <Content Include="queries\getServerInfo.ashx" />
+    <Content Include="queries\GetPainelHistorico.ashx" />
+    <Content Include="queries\GetCarros.ashx" />
+    <None Include="fonts\Roboto-Black.ttf" />
+    <None Include="fonts\Roboto-BlackItalic.ttf" />
+    <None Include="fonts\Roboto-Bold.ttf" />
+    <None Include="fonts\Roboto-BoldCondensed.ttf" />
+    <None Include="fonts\Roboto-BoldCondensedItalic.ttf" />
+    <None Include="fonts\Roboto-BoldItalic.ttf" />
+    <None Include="fonts\Roboto-Condensed.ttf" />
+    <None Include="fonts\Roboto-CondensedItalic.ttf" />
+    <None Include="fonts\Roboto-Italic.ttf" />
+    <None Include="fonts\Roboto-Light.ttf" />
+    <None Include="fonts\Roboto-LightItalic.ttf" />
+    <None Include="fonts\Roboto-Medium.ttf" />
+    <None Include="fonts\Roboto-MediumItalic.ttf" />
+    <None Include="fonts\Roboto-Regular.ttf" />
+    <None Include="fonts\Roboto-Thin.ttf" />
+    <None Include="fonts\Roboto-ThinItalic.ttf" />
+    <Content Include="queries\GetTransferencias.ashx" />
+    <Content Include="queries\GetCarrosTerminal.ashx" />
+    <Content Include="queries\GetTransferencia.ashx" />
+    <Content Include="queries\RemoveCarroTerminal.ashx" />
+    <Content Include="queries\SendSignal.ashx" />
+    <Content Include="queries\GetSignal.ashx" />
+    <Content Include="queries\SendCarro.ashx" />
+    <Content Include="queries\GetNotificacoes.ashx" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Web.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>44024</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44024/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

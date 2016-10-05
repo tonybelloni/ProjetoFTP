@@ -1,0 +1,64 @@
+﻿body {
+}
+
+#download-list
+{
+    width : 320px;
+    position : fixed;
+    top : 0;
+    bottom: 0;
+    right: 0;
+    z-index : 9999;
+    background : #000;
+    box-shadow: 0 0 24px rgba(0,0,0,.4);
+}
+
+#download-container
+{
+    background : #ccc;
+    position : absolute;
+    right: 0;
+    top : 0;
+    bottom: 0; left: 0;
+    z-index: 10;
+}
+
+#download-list #temporeal
+{
+    width : 320px;
+    height : 100%;
+}
+
+#download-list #borda-left
+{
+    width : 10px;
+    height : 100%;
+}
+
+#download-show-hide
+{
+    width : 18px;
+    height : 36px;
+    position : absolute;
+    background : #555;
+    margin-left : -18px;
+    top : 50%;
+    margin-top : -18px;
+    border-radius : 36px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    transition: all .1s linear;
+    cursor : pointer;
+    display: none;
+}
+
+#download-show-hide #seta
+{
+    width : 30px;
+    padding : 3px 0;
+    margin-left: -4px;
+    z-index : 10;
+}

@@ -1,0 +1,84 @@
+﻿body {
+}
+
+.relatorio
+{
+}
+
+#relatorio_header
+{
+    font-size : 10pt;
+    padding : 0px;
+    padding-left : 61px;
+    margin : 0px;
+}
+
+#relatorio_header div
+{
+    display : table-cell;
+    margin : 0px;
+    padding : 5px 0;
+    text-align : center;
+    vertical-align : middle;
+}
+
+.relatorio_icon
+{
+    width : 30px;
+}
+
+.copias_rel
+{   
+}
+
+.lblPaginas
+{
+    display : inline-block;
+    float : left;
+}
+
+.seta_paginacao
+{
+    padding : 0;
+    float : right;
+}
+
+.seta_paginacao input
+{
+    padding : 8px 0;
+}
+
+
+#content_header_options
+{
+    width : 180px;
+}
+
+#email_box .txt:first-child
+{
+    margin-right : 10px;
+}
+
+.copia_info_container
+{
+    padding : 10px 0;
+}
+
+.copia_info
+{
+    width : 500px;
+    padding : 2px 0;
+}
+
+.copia_info_data
+{
+    float : right;
+    width : 200px;
+    display : inline-block;
+    text-align : left;
+}
+
+.fixed_header
+{
+    height : 60px;
+}

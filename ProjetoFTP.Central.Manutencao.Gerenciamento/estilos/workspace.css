@@ -1,0 +1,56 @@
+﻿.work-item
+{
+    text-align : center;
+    padding : 10px 10px 20px 10px;
+    display : inline-block;
+    text-decoration : none;
+}
+
+.work-item img
+{
+    padding : 16px;
+    border-radius : 8px;
+    -webkit-border-radius : 8px;
+    -moz-border-radius : 8px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    position : relative;
+    background: #fcfcff;
+    border-bottom : 3px solid #ccc;
+    display : block;
+    margin-bottom : 10px;
+    
+}
+
+.work-item:hover > img
+{
+    top : -5px;
+    box-shadow : 0px 7px 14px rgba(0,0,0,.08);
+    -webkit-box-shadow : 0px 7px 0 2px rgba(0,0,0,.08);
+    -moz-box-shadow : 0px 7px 14px rgba(0,0,0,.08);
+}
+
+.work-item:active > img
+{
+    top : 2px;
+}
+
+.work-item span
+{
+    padding : 3px 15px;
+    margin : 0 0px;
+    font-size : 12pt;
+    font-family : Arial;
+    font-weight : normal;   
+    background : rgba(0,0,0,.3);
+    border-radius : 4px;
+    -moz-border-radius : 4px;
+    -webkit-border-radius : 2px;
+    color : #fff;
+    text-decoration : none;
+    text-align : center;
+    width : auto;
+    display : block;
+}

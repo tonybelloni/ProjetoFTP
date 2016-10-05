@@ -1,0 +1,46 @@
+﻿
+
+
+.box_container
+{
+    background : #f3f3f3;
+    border : 3px solid #ccc;
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    box-shadow : 0 3px 20px rgba(0,0,0,.5);
+    -webkit-box-shadow : 0 3px 20px rgba(0,0,0,.5);
+    -moz-box-shadow : 0 3px 20px rgba(0,0,0,.5);
+}
+
+.box_overlay
+{
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+    background : rgba(80,80,80,.7);
+    display : none;
+}
+
+.box_header
+{
+    background : #E5E5E5;
+    padding : 10px;
+}
+
+.box_content
+{
+    padding : 20px;
+}
+
+.box_icon
+{
+    float : left;
+}
+
+.anchor_close
+{
+    float : right;
+}

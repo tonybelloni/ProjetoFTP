@@ -1,0 +1,46 @@
+﻿body {
+    background : #f0f2f3;
+}
+
+#content
+{
+    padding : 0px;
+}
+
+#content_header
+{
+    padding : 14px;
+    background : #e5e7e8;
+    position: relative;
+    z-index: 1;
+    /*-moz-box-shadow : 0 0 10px rgba(0,0,0,.7);
+    -webkit-box-shadow : 0 0 15px rgba(0,0,0,.7);*/
+}
+
+#content_main
+{
+    padding: 20px;
+    width : auto;
+}
+
+#content_bottom
+{
+    text-align : center;
+    padding : 10px 0;
+}
+
+#content_bottom img
+{
+    height : 60px;
+    padding : 10px 20px;
+}
+
+.rodape
+{
+    background: #fff;
+    display: inline-block;
+    padding: 20px;
+    border-radius: 2px;
+    text-shadow: none;
+    box-shadow: 0 2px 0 2px rgba(0,0,0,.04);
+}

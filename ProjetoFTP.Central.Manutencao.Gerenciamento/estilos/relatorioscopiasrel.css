@@ -1,0 +1,113 @@
+﻿body 
+{
+    height : 100%;
+}
+
+.copias_rel
+{
+    font-size : 9pt;
+}
+
+
+.copia_info_container
+{
+    text-align : left;
+    font-size : 10pt;
+    color : #656565;
+    line-height : 20px;
+    background : #fff;
+    padding : 5px 0;
+}
+
+.copia_info_container hr
+{
+    margin : 5px 0;
+    border : none;
+    border-top : 1px solid #d5d5d5;
+}
+
+.copia_info_container h2
+{
+    margin : 5px 0;
+    text-shadow : none;
+    font-size : 11pt;
+    font-weight : bold;
+}
+
+.lista_procedimentos
+{
+    margin : 0px;
+}
+
+.codigo_status
+{
+    color : #000;
+    font-size : 14px;
+}
+
+.copia_info.dark
+{
+}
+
+.copia_info
+{
+    padding : 2px 0px;
+    border-top : 1px solid #d5d5d5;
+    font-size : 9pt;
+}
+
+.copia_info.first
+{
+    border-top : none;
+}
+
+.copia_info_data
+{
+    float : right;  
+    text-align : left;
+    width : 180px;
+}
+
+#relatorios
+{
+}
+
+#filtro
+{
+    display : none;
+    position : fixed;
+    background : #fff;
+    border-radius : 2px;
+    border : 2px solid #ccc;
+    padding : 20px;
+    margin : -10px 0 0 -10px;
+    box-shadow : 0 3px 10px rgba(0,0,0,.3);
+    z-index : 10;
+}
+
+#paginas_gridview
+{
+    position : relative;
+    top : 0px;
+    display : inline;
+}
+
+#wrapper
+{
+	position:absolute; z-index:150000;
+	top:120px;
+	bottom:0px;  
+	left:0;
+	width:100%;
+    background : #e0e0e0;
+	overflow:auto;
+}
+
+#scroller
+{
+    position:absolute; z-index:1;
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	width:100%;
+	padding:0;
+}
