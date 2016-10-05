@@ -37,6 +37,8 @@ namespace ProjetoFTP.Central.Manutencao
                 log = new Log(@"c:\rioservice\ftp\servidor\logs\sends.log");
                 Console.Title = "Servidor FTP";
 
+                //Teste GIT
+
                 gerenciadorTerminal = new GerenciadorTerminal();
                 controle = new CamadaControle();
                 AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
