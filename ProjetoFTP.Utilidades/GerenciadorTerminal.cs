@@ -22,66 +22,66 @@ namespace ProjetoFTP.Utilidades
 
         public GerenciadorTerminal()
         {
-            this._existeComunicação = false;
-            this._existiaComunicação = true;
-            this._terminais = new List<Terminal>();
-            this._camadaControle = new CamadaControle();
-            execlog = new Log();
+            try
+            {
+                this._existeComunicação = false;
+                this._existiaComunicação = true;
+                this._terminais = new List<Terminal>();
+                this._camadaControle = new CamadaControle();
+                execlog = new Log();
 
-            CarregaTerminais();
-            CriaArquivosLeitura();
+                CarregaTerminais();
+                CriaArquivosLeitura();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void VerificaTerminais()
         {
-            new Thread((ThreadStart)delegate
+            bool primeiraIteracao = true;
+
+            try
             {
-                bool primeiraIteracao = true;
-
-                while (true)
+                int qt = 0;
+                for (int i = 0; i < _terminais.Count; i++)
                 {
-                    try
+                    this._terminais[i].VerificaComunicação();
+                    if (_terminais[i].Comunicando && _terminais[i].Habilitado)
                     {
-                        int qt = 0;
-                        for (int i = 0; i < _terminais.Count; i++)
-                        {
-                            this._terminais[i].VerificaComunicação();
-                            if (_terminais[i].Comunicando && _terminais[i].Habilitado)
-                            {
-                                qt++;
-                            }
-                            else
-                            {
-                                if (_terminais[i].TamanhoFila > 0 && !primeiraIteracao)
-                                {
-                                    Console.WriteLine(string.Format("GerenciadorTerminal - VerificaTerminais - 001 : terminal {0} vai ser realocado", _terminais[i].Ip));
-                                    RealocaCarros(_terminais[i]);
-                                }
-                            }
-                        }
-
-                        this._existiaComunicação = this._existeComunicação;
-                        if (qt > 0)
-                        {
-                            this._existeComunicação = true;
-                        }
-                        else this._existeComunicação = false;
-                        
-                        SalvaJSONTerminais();
-                        
-                        if (primeiraIteracao)
-                            primeiraIteracao = false;
-                        
-                        Console.WriteLine(string.Format("GerenciadorTerminal - VerificaTerminais - 002 : {0} terminais comunicando", this._terminais.Where(t => t.Comunicando && t.Habilitado).Count()));
-                        Thread.Sleep(60000);
+                        qt++;
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        //execlog.GravalogExec("servidor.log", "GerenciadorTerminal : VerificaTerminais : " + ex.Message);
-                        throw new Exception("GerenciadorTerminal - Exception 001 - VerificaTerminais : " + ex.Message);
+                        if (_terminais[i].TamanhoFila > 0 && !primeiraIteracao)
+                        {
+                            Console.WriteLine(string.Format("GerenciadorTerminal - VerificaTerminais - 001 : terminal {0} vai ser realocado", _terminais[i].Ip));
+                            RealocaCarros(_terminais[i]);
+                        }
                     }
                 }
-            }).Start();
+
+                this._existiaComunicação = this._existeComunicação;
+                if (qt > 0)
+                {
+                    this._existeComunicação = true;
+                }
+                else this._existeComunicação = false;
+
+                SalvaJSONTerminais();
+
+                if (primeiraIteracao)
+                    primeiraIteracao = false;
+
+                Console.WriteLine(string.Format("GerenciadorTerminal - VerificaTerminais - 002 : {0} terminais comunicando", this._terminais.Where(t => t.Comunicando && t.Habilitado).Count()));
+            }
+            catch (Exception ex)
+            {
+                //execlog.GravalogExec("servidor.log", "GerenciadorTerminal : VerificaTerminais : " + ex.Message);
+                throw new Exception("GerenciadorTerminal - Exception 001 - VerificaTerminais : " + ex.Message);
+            }
         }
 
         public Terminal EnviaCarro(Carro carro)
@@ -140,18 +140,18 @@ namespace ProjetoFTP.Utilidades
         private Terminal PegaTerminalOcioso()
         {
             try
-            { 
-                 List<Terminal> ligadas = null;
-                 ligadas = _terminais.Where(t => t.Comunicando && t.Habilitado).ToList<Terminal>();
-                 if (ligadas.Count() > 0)
-                 {
+            {
+                List<Terminal> ligadas = null;
+                ligadas = _terminais.Where(t => t.Comunicando && t.Habilitado).ToList<Terminal>();
+                if (ligadas.Count() > 0)
+                {
                     return ligadas.Where(t => t.TamanhoFila == ligadas.Min(t2 => t2.TamanhoFila)).First();
-                 }
-                 else
-                 {
-                     Console.WriteLine("GerenciadorTerminal - PegaTerminalOcioso - 001 : Não há terminal comunicando");
-                     throw new TerminalComunicationException("não há terminal comunicando");
-                 }
+                }
+                else
+                {
+                    Console.WriteLine("GerenciadorTerminal - PegaTerminalOcioso - 001 : Não há terminal comunicando");
+                    throw new TerminalComunicationException("não há terminal comunicando");
+                }
             }
             catch (Exception ex)
             {
@@ -175,12 +175,12 @@ namespace ProjetoFTP.Utilidades
                         this._terminais.Add(terminal);
                     }
                 }
-
             }
             catch
             {
                 //execlog.GravalogExec("servidor.log", "GerenciadorTerminal - CarregaTerminais - 001 : não foi possivel carregar os terminais.");
                 Console.WriteLine("GerenciadorTerminal - CarregaTerminais - 001 : não foi possivel carregar os terminais.");
+                throw new Exception("GerenciamentoTerminal - CarregaTerminais - 001");
             }
         }
 
@@ -219,7 +219,7 @@ namespace ProjetoFTP.Utilidades
                         terminalInativo.RemoveCarro(carro);
                         EnviaCarro(carro);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         //execlog.GravalogExec("servidor.log", "GerenciadorTerminal - Exception 006 - CriaArquivosLeitura : " + ex.Message);
                         Console.WriteLine(ex.Message);
@@ -269,7 +269,7 @@ namespace ProjetoFTP.Utilidades
                 });
             }
             string json = JsonConvert.SerializeObject(saida);
-            
+
             try
             {
                 CamadaDados.EscreveArquivo(CamadaConfiguracao.JSON_LISTA_TERMINAIS, json);
