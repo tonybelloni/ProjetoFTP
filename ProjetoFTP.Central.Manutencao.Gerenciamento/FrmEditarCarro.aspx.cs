@@ -38,12 +38,12 @@ namespace ProjetoFTP.Web
                     }
                     catch
                     {
-                        Response.Redirect("FrmCarros.aspx");
+                        Response.Redirect("/carros");
                     }
                 }
                 else
                 {
-                    Response.Redirect("FrmCarros.aspx");
+                    Response.Redirect("/carros");
                 }
             }
         }
@@ -55,8 +55,13 @@ namespace ProjetoFTP.Web
                 string query = string.Format("UPDATE CARROS SET IP='{0}', USUARIO='{1}', SENHA='{2}' WHERE ID_CARRO={3}", new object[] { txtIp.Text, txtUsuario.Text, txtSenha.Text, Request.QueryString["id"] });
                 dados.RealizaConsultaSql(query);
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Response.Redirect("/carros");
             }
         }
     }

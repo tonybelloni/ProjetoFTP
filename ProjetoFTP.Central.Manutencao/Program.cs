@@ -125,6 +125,7 @@ namespace ProjetoFTP.Central.Manutencao
                     //outputmessage("Servidor - IniciaRotinaVerificacao - Inicio ping...");
                     if (carros[i].Ping())
                     {
+
                         Console.WriteLine(string.Format("Servidor - IniciaRotinaVerificacao - Carro {0} pingado - {1}", carros[i].Ip, DateTime.Now.ToString()));
                         //outputmessage(string.Format("Servidor - IniciaRotinaVerificacao - Carro {0} pingado", carros[i].Ip));
 
@@ -133,13 +134,13 @@ namespace ProjetoFTP.Central.Manutencao
                         //outputmessage("Servidor - Atualizando dados do carro...");
                         #region atualiza dados do carro
 
-                        if (sleepUpdate >= maxUpdateSleep)
-                        {
+                        //if (sleepUpdate >= maxUpdateSleep)
+                        //{
                             controle.AtualizaUltimoPing(carros[i]);
-                            Console.WriteLine(string.Format("Servidor - IniciaRotinaVerificacao - 001 : O carro {0} foi atualizado - {1}", carros[i].Numero, DateTime.Now.ToString()));
+                            Console.WriteLine(string.Format("Servidor - IniciaRotinaVerificacao : Carro {0} - Ultima Verificacao Atualizada - {1}", carros[i].Numero, DateTime.Now.ToString()));
                             //outputmessage(string.Format("Servidor - IniciaRotinaVerificacao - 001 : O carro {0} foi atualizado", carros[i].Numero));
-                            sleepUpdate = 0;
-                        }
+                        //    sleepUpdate = 0;
+                        //}
                         #endregion
 
                         //outputmessage("Servidor - Notificando status...");

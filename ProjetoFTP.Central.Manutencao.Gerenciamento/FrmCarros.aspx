@@ -61,14 +61,11 @@
                         <Columns>
                             <asp:ButtonField ButtonType="Button" ControlStyle-CssClass="btn" Text="Editar" CommandName="Edit" ItemStyle-Width="60px" ItemStyle-HorizontalAlign="Center"/>
                             <asp:ButtonField ButtonType="Button" Text="Forçar Cópia" CommandName="Copiar" ItemStyle-HorizontalAlign="Center"/>
-                            <asp:BoundField HeaderText="NUMERO DO CARRO" DataField="ID_CARRO" ItemStyle-HorizontalAlign="Center" />
+                            <asp:BoundField HeaderText="Número do Carro" DataField="ID_CARRO" ItemStyle-HorizontalAlign="Center" />
                             <asp:BoundField HeaderText="IP" DataField="IP"  ItemStyle-HorizontalAlign="Center"/>
-                            <asp:BoundField HeaderText="USUÁRIO" DataField="USUARIO"  ItemStyle-HorizontalAlign="Center"/>
-                            <asp:BoundField HeaderText="SENHA" DataField="SENHA"  ItemStyle-HorizontalAlign="Center"/>
-                            <asp:BoundField HeaderText="ULTIMA CÓPIA" DataField="ULTIMA_COPIA"  ItemStyle-HorizontalAlign="Center"/>
-                            <asp:BoundField HeaderText="ULTIMO ARQUIVO COPIADO" DataField="ULTIMO_ARQUIVO_COPIADO"  ItemStyle-HorizontalAlign="Center"/>
-                            <asp:BoundField HeaderText="VERIFICADO" DataField="VERIFICADO"  ItemStyle-HorizontalAlign="Center"/>
-                            <asp:BoundField HeaderText="ULTIMA VERIFICAÇÃO" DataField="ULTIMA_VERIFICACAO"  ItemStyle-HorizontalAlign="Center"/>
+                            <asp:BoundField HeaderText="Última Cópia" DataField="ULTIMA_COPIA"  ItemStyle-HorizontalAlign="Center"/>
+                            <asp:BoundField HeaderText="Último Arquivo" DataField="ULTIMO_ARQUIVO_COPIADO"  ItemStyle-HorizontalAlign="Center"/>
+                            <asp:BoundField HeaderText="Última Verificação" DataField="ULTIMA_VERIFICACAO"  ItemStyle-HorizontalAlign="Center"/>
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>

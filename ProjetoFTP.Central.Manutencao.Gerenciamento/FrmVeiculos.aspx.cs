@@ -36,21 +36,54 @@ namespace ProjetoFTP.Web
             gvCarros.DataBind();
         }
 
+        public void btnCancelarAddCarro_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/carros");
+        }
+
+        public void btnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string query = string.Format("UPDATE CARROS SET IP='{0}', USUARIO='{1}', SENHA='{2}' WHERE ID_CARRO={3}", new object[] { txtAltIp.Text, txtAltUsuario.Text, txtAltSenha.Text, txtAltNumero.Text});
+                dados.RealizaConsultaSql(query);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Response.Redirect("/carros");
+            }
+        }
+
         public void btnAdicionarCarro_Click(object sender, EventArgs e)
         {
             try
             {
                 string pattern = @"^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$";
                 Regex check = new Regex(pattern);
-                if (!check.IsMatch(txtIp.Text) && !string.IsNullOrEmpty(txtIp.Text))
-                    throw new Exception("O ip digitado não é válido");
-                if (txtSenha.Text != txtRepetirSenha.Text)
-                    throw new Exception("Senha incorreta");
-                string id_carro = txtNumeroCarroAdd.Text;
-                string ip = (!string.IsNullOrEmpty(txtIp.Text)) ? txtIp.Text : "NULL";
-                string usuario = (!string.IsNullOrEmpty(txtUsuario.Text)) ? txtUsuario.Text : "NULL";
-                string senha = (!string.IsNullOrEmpty(txtSenha.Text)) ? txtSenha.Text : "NULL";
 
+                if (string.IsNullOrEmpty(txtNumeroCarroAdd.Text))
+                    throw new Exception("O número do carro deve ser informado");
+
+                if (!check.IsMatch(txtIp.Text) || string.IsNullOrEmpty(txtIp.Text))
+                    throw new Exception("IP digitado não é válido ou não foi informado");
+
+                if (string.IsNullOrEmpty(txtUsuario.Text))
+                    throw new Exception("Nome do usuário do FTP é obrigatório");
+
+                if (string.IsNullOrEmpty(txtSenha.Text))
+                    throw new Exception("Senha do usuário do FTP é obrigatória");
+
+                if ( (txtSenha.Text != txtRepetirSenha.Text) || string.IsNullOrEmpty(txtSenha.Text) )
+                    throw new Exception("O campo de validação de senha não é igual a primeira senha digitada");
+
+                string ultimo_arquivo;
+
+                ultimo_arquivo = string.Format("/imagens/002/{0}/{1}/event{2}002.avi", DateTime.Now.ToString("yyyyMMdd"), DateTime.Now.ToString("HH"), DateTime.Now.ToString("yyyyMMddHHmmss"));
+ 
                 //this.dados.RealizaConsultaSql(string.Format("INSERT INTO CARROS(ID_CARRO, IP, USUARIO, SENHA) values({0},'{1}','{2}','{3}')", new object[] { id_carro, ip, usuario, senha }));
                 string query = string.Format("insert into CARROS       " +
                                              "(ID_CARRO,               " +
@@ -64,7 +97,8 @@ namespace ProjetoFTP.Web
                                              " ULTIMA_VERIFICACAO,     " +
                                              " QTDE_CAMERAS,           " +
                                              " COPIANDO,               " +
-                                             " EMPRESA_NUM)            " +
+                                             " EMPRESA_NUM,            " + 
+                                             " ATIVO)                  " +
                                              "values                   " +
                                              "({0},                    " +
                                              "'{1}',                   " +
@@ -72,12 +106,13 @@ namespace ProjetoFTP.Web
                                              "'{3}',                   " +
                                              "0,                       " +
                                              "sysdate-1,               " +
-                                             "null,                    " +
+                                             "'{4}',                   " +
                                              "0,                       " +
                                              "sysdate-1,               " +
                                              "4,                       " +
                                              "0,                       " +
-                                             "null)", new object[] { id_carro, ip, usuario, senha });
+                                             "null,                    " +
+                                             "1                       )", new object[] { txtNumeroCarroAdd.Text, txtIp.Text, txtUsuario.Text, txtSenha.Text, ultimo_arquivo});
 
                 this.dados.RealizaConsultaSql(query);
 
@@ -154,6 +189,22 @@ namespace ProjetoFTP.Web
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "tmp", "createBox('Aviso do Sistema','" + erro + "', { width : 'auto' , height : 'auto' });", true);
                 }
             }
+            else if (e.CommandName == "Editar")
+            {
+                int idCarro = Convert.ToInt32(Server.HtmlDecode(gvCarros.Rows[Convert.ToInt32(e.CommandArgument)].Cells[2].Text));
+                string query = string.Format("select * from carros where id_carro = {0}", idCarro);
+                DataTable ds = dados.RealizaConsultaSql(query).Tables[0];
+                if (ds.Rows.Count > 0)
+                {
+                    txtAltNumero.Text = ds.Rows[0]["ID_CARRO"].ToString();
+                    txtAltIp.Text = ds.Rows[0]["IP"].ToString();
+                    txtAltUsuario.Text = ds.Rows[0]["USUARIO"].ToString();
+                    txtAltSenha.Text = ds.Rows[0]["SENHA"].ToString();
+                    txtAltRepetirSenha.Text = ds.Rows[0]["SENHA"].ToString();
+                    ddlStatusEditar.SelectedValue = ds.Rows[0]["ATIVO"].ToString();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "tmp", "showHideBox('#edit_box')", true);
+                }
+            }
         }
 
         public void btnProximo_Click(object sender, EventArgs e)
@@ -208,6 +259,23 @@ namespace ProjetoFTP.Web
             FTP ftp = new FTP(ip, usuario, senha);
             if (!ftp.IsConnecting())
                 throw new Exception("O carro está na garagem, mas não é possível copiar os arquivos.");
+        }
+
+        public void gvCarros_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string value = Server.HtmlDecode(e.Row.Cells[e.Row.Cells.Count - 1].Text);
+                if (value == "0")
+                {
+                    e.Row.Cells[e.Row.Cells.Count - 1].Text = "<span class='red_box'>Inativo</span>";
+                }
+                else
+                {
+                    e.Row.Cells[e.Row.Cells.Count - 1].Text = "<span class='green_box'>Ativo</span>";
+                }
+            }
+
         }
 
     }

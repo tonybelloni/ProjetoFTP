@@ -13,12 +13,11 @@
         <table width="380px">
             <tr>
                 <td>Número: </td>
-                <td><asp:TextBox runat="server" ID="txtNumero" CssClass="txt"></asp:TextBox></td>
+                <td><asp:TextBox runat="server" ID="txtNumero" CssClass="txt" Enabled="false"></asp:TextBox></td>
             </tr>
             <tr>
-                <td>Ip: </td>
+                <td>IP: </td>
                 <td><asp:TextBox runat="server" ID="txtIp" CssClass="txt"></asp:TextBox></td>
-                <td align="left"><a><img src='/img/detalhes.png' width="28px"/></a></td>
             </tr>
             <tr>
                 <td>Usuário: </td>
@@ -30,7 +29,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><asp:Button runat="server" ID="btnEditar" CssClass="btn" Text="Editar" OnClick="btnEditar_Click" /></td>
+                <td><asp:Button runat="server" ID="btnEditar" CssClass="btn" Text="Editar" OnClick="btnEditar_Click"/></td>
             </tr>
         </table>
     </div>

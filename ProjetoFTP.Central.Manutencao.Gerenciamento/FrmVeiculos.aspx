@@ -35,10 +35,7 @@
                 }
             });
 
-            $(".editar").click(function () {
-                var numero = $(this).parent().parent().find(".numero").text();
-                createBox("Editar Carro", "<iframe src='/FrmEditarCarro.aspx?id=" + numero + "' frameborder='0' noresize='noresize' scrolling='no' width='380px' height='300px'></iframe>", { icon: "/img/editar.png", width: 'auto', height: 'auto' });
-            });
+            $(".box3").box({ title: "Editar Carro", icon: "/img/editar.png", width: "auto", height: "auto" });
 
             $(".pesquisa").watermark("Número do carro");
 
@@ -97,6 +94,7 @@
             <div id="action_bar_intent_actions">
                 <a id="action_search" class="box" href="#search_box"><img src="/img/busca.png"/></a>
                 <a id="action_new" class="box2" href="#add_box"><img src="/img/mais.png"/></a>
+                <a id="action_edit" class="box3" href="#edit_box"><img src="/img/editar.png"/></a>
             </div>
         </div>
     <asp:ScriptManager runat="server" ID="ScriptManager1"></asp:ScriptManager>
@@ -133,15 +131,7 @@
                 if (postBackElement.id == 'btnAdicionarCarro' || postBackElement.id == 'btnBuscarCarro') {
                     $get('updProgressRelatorio').style.display = 'none';
                 }
-
-
-                $(".editar").click(function () {
-                    var numero = $(this).parent().parent().find(".numero").text();
-                    createBox("Editar Carro", "<iframe src='/FrmEditarCarro.aspx?id=" + numero + "'></iframe>", { icon: "/img/editar.png" });
-                });
-
             }
-
 
     </script>
         <div id="content">
@@ -156,17 +146,23 @@
                 </div>
             </div>
             <div id="content_main">
-                <asp:GridView runat="server" ID="gvCarros" CssClass="grid" AutoGenerateColumns="false" Width="100%" GridLines="None" OnRowCommand="gvCarros_RowCommand" AllowPaging="true" PageSize="100">
+                <asp:GridView runat="server" ID="gvCarros" CssClass="grid" AutoGenerateColumns="false" Width="100%" GridLines="None" OnRowCommand="gvCarros_RowCommand" AllowPaging="true" PageSize="100" OnRowDataBound="gvCarros_RowDataBound">
                     <PagerStyle CssClass="paging_hidden" HorizontalAlign="Right" />  
                     <AlternatingRowStyle BackColor="#EBEBEB" />
                     <RowStyle BackColor="#E3E3E3" />
                     <Columns>
-                        <asp:HyperLinkField Text="<img src='/img/editar.png' width='28px'>" ControlStyle-Width="28px" ItemStyle-Width="28px" ItemStyle-HorizontalAlign="Center" ControlStyle-CssClass="editar"/>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton runat="server" ID="lbEditar" CommandName="Editar" CommandArgument='<%# Container.DataItemIndex %>'><img src="/img/editar.png" width="28px" /></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:ButtonField ButtonType="Image" ImageUrl="/img/download.png" CommandName="Copiar" ControlStyle-Width="28px" ItemStyle-Width="28px" ItemStyle-HorizontalAlign="Center"/>
-                        <asp:BoundField HeaderText="NUMERO DO CARRO" DataField="ID_CARRO" ItemStyle-HorizontalAlign="Center" ItemStyle-CssClass="numero"/>
+                        <asp:BoundField HeaderText="Número do Carro" DataField="ID_CARRO" ItemStyle-HorizontalAlign="Center" />
                         <asp:BoundField HeaderText="IP" DataField="IP"  ItemStyle-HorizontalAlign="Center"/>
-                        <asp:BoundField HeaderText="USUÁRIO" DataField="USUARIO"  ItemStyle-HorizontalAlign="Center"/>
-                        <asp:BoundField HeaderText="ULTIMA CÓPIA" DataField="ULTIMA_COPIA"  ItemStyle-HorizontalAlign="Center"/>
+                        <asp:BoundField HeaderText="Última Cópia" DataField="ULTIMA_COPIA"  ItemStyle-HorizontalAlign="Center"/>
+                        <asp:BoundField HeaderText="Último Arquivo" DataField="ULTIMO_ARQUIVO_COPIADO"  ItemStyle-HorizontalAlign="Center"/>
+                        <asp:BoundField HeaderText="Última Verificação" DataField="ULTIMA_VERIFICACAO"  ItemStyle-HorizontalAlign="Center"/>
+                        <asp:BoundField HeaderText="Ativo" DataField="ATIVO" ItemStyle-HorizontalAlign="Center"/>
                     </Columns>
                 </asp:GridView>
             </div>
@@ -210,12 +206,53 @@
                     <td></td>
                     <td>
                         <asp:Button runat="server" ID="btnAdicionarCarro" CssClass="btn" Text="Adiconar" OnClick="btnAdicionarCarro_Click" />
-                        <a class=" btn vermelho" id="btnCancelarAddCarro">Cancelar</a>
+                        <asp:Button runat="server" ID="btnCancelarAddCarro" CssClass="btn" Text="Cancelar" OnClick="btnCancelarAddCarro_Click" />
                     </td>
                     <td></td>
                 </tr>
             </table>
         </div>
+
+        <div id="edit_box">
+            <asp:UpdatePanel runat="server" ID="updEditar">
+                <ContentTemplate>
+            <table width="380px">
+            <tr>
+                <td>Número: </td>
+                <td><asp:TextBox runat="server" ID="txtAltNumero" CssClass="txt" Enabled="false"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td>IP: </td>
+                <td><asp:TextBox runat="server" ID="txtAltIp" CssClass="txt"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td>Usuário: </td>
+                <td><asp:TextBox runat="server" ID="txtAltUsuario" CssClass="txt"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td>Senha: </td>
+                <td><asp:TextBox runat="server" ID="txtAltSenha" CssClass="txt" TextMode="Password"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td>Senha: </td>
+                <td><asp:TextBox runat="server" ID="txtAltRepetirSenha" CssClass="txt" TextMode="Password"></asp:TextBox></td>
+            </tr>
+            <tr>
+                 <td>Status:</td>
+                 <td><asp:DropDownList runat="server" ID="ddlStatusEditar" CssClass="ddl">
+                        <asp:ListItem Text="Ativo" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Inativo" Value="0"></asp:ListItem>
+                    </asp:DropDownList></td>
+                </tr>
+            <tr>
+                <td></td>
+                <td><asp:Button runat="server" ID="Button1" CssClass="btn" Text="Editar" OnClick="btnEditar_Click"/></td>
+            </tr>
+        </table>
+                         </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+
         <div id="search_box">
             <asp:TextBox runat="server" ID="txtNumeroCarro" CssClass="txt pesquisa" Width="350px"></asp:TextBox>
             <asp:Button runat="server" ID="btnBuscarCarro" CssClass="btn" Text="Buscar" OnClick="btnBuscarCarro_Click" OnClientClick="showHideBox('#search_box');"/>
